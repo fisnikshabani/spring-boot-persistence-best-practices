@@ -1,16 +1,13 @@
 package com.example.associationsunidirectional.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.io.Serializable;
 
 @Entity
 public class Book implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    public static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,17 +41,20 @@ public class Book implements Serializable {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
+    public boolean equals(Object o) {
+        if (this == o) {
             return true;
         }
 
-        if (getClass() != obj.getClass()) {
+        if (o == null) {
             return false;
         }
 
-        return id != null && id.equals(((Book) obj).id);
-    }
+        if (getClass() != o.getClass()) {
+            return false;
+        }
+        return id != null && id.equals(((Book) o).id);
+        }
 
     @Override
     public int hashCode() {

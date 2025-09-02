@@ -60,6 +60,8 @@ public class BookStoreService {
     public void deleteLastBook() {
 
         Author author = authorRepository.fetchByName("Joana Nimar");
+        List<Book> books = author.getBooks();
+        author.removeBook(books.getLast());
     }
 
     public void deleteFirstBook() {
